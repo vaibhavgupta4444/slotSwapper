@@ -1,18 +1,22 @@
+{
+  "version": 2,
+  "builds": [
     {
-      "version": 2,
-      "builds": [
-        {
-          "src": "src/index.ts", 
-          "use": "@vercel/node",
-          "config": {
-            "includeFiles": ["dist/**"]
-          }
-        }
-      ],
-      "routes": [
-        {
-          "src": "/api/(.*)", 
-          "dest": "src/index.ts"
-        }
-      ]
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["src/**/*.ts", "package.json"]
+      }
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/index.ts"
+    }
+  ],
+  "env": {
+    "MONGODB_URL": "@mongodb_url",
+    "JWT_SECRET": "@jwt_secret"
+  }
+}
