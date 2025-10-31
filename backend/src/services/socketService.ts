@@ -7,6 +7,7 @@ interface AuthenticatedSocket extends Socket {
     user?: any;
 }
 
+
 class SocketService {
     private io: SocketIOServer;
     private userSockets: Map<string, string> = new Map(); // userId -> socketId
@@ -14,7 +15,7 @@ class SocketService {
     constructor(server: Server) {
         this.io = new SocketIOServer(server, {
             cors: {
-                origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+                origin: "*",
                 credentials: true,
                 methods: ['GET', 'POST']
             }

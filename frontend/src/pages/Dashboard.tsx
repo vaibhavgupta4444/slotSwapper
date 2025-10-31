@@ -39,7 +39,7 @@ const Dashboard = () => {
   const fetchEvents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/events', {
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + '/api/events', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEvents(response.data.events || []);
@@ -58,7 +58,7 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/api/events', newEvent, {
+      await axios.post(import.meta.env.VITE_BACKEND_URL+'/api/events', newEvent, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -73,7 +73,7 @@ const Dashboard = () => {
   const updateEventStatus = async (eventId: string, newStatus: 'BUSY' | 'SWAPPABLE') => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:3000/api/events/${eventId}`, 
+      await axios.put(import.meta.env.VITE_BACKEND_URL + `/api/events/${eventId}`, 
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

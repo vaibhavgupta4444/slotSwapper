@@ -57,7 +57,7 @@ const Marketplace = () => {
   const fetchMySwappableSlots = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/events?status=SWAPPABLE', {
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + '/api/events?status=SWAPPABLE', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMySwappableSlots(response.data.events || []);
@@ -78,7 +78,7 @@ const Marketplace = () => {
   const handleSwapRequest = async (mySlotId: string, theirSlotId: string) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/api/swap-request', {
+      await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/swap-request', {
         mySlotId,
         theirSlotId
       }, {
