@@ -1,19 +1,18 @@
-{
-  "version": 2,
-  "name": "slotswapper-backend",
-  "builds": [
     {
-      "src": "dist/index.js",
-      "use": "@vercel/node"
+      "version": 2,
+      "builds": [
+        {
+          "src": "src/index.ts", 
+          "use": "@vercel/node",
+          "config": {
+            "includeFiles": ["dist/**"]
+          }
+        }
+      ],
+      "routes": [
+        {
+          "src": "/api/(.*)", 
+          "dest": "src/index.ts"
+        }
+      ]
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/index.js"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
-}
