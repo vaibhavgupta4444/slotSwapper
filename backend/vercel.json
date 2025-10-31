@@ -14,9 +14,5 @@
       "src": "/(.*)",
       "dest": "src/index.ts"
     }
-  ],
-  "env": {
-    "MONGODB_URL": "@mongodb_url",
-    "JWT_SECRET": "@jwt_secret"
-  }
+  ]
 }
