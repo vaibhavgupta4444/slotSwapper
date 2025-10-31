@@ -142,7 +142,7 @@ const Requests = () => {
   const handleSwapResponse = async (requestId: string, accepted: boolean) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:3000/api/swap-response/${requestId}`, {
+      await axios.post(import.meta.env.VITE_BACKEND_URL+`/api/swap-response/${requestId}`, {
         accepted
       }, {
         headers: { Authorization: `Bearer ${token}` }
