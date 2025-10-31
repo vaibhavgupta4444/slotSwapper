@@ -45,7 +45,7 @@ const Marketplace = () => {
   const fetchSwappableSlots = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/swappable-slots', {
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/swappable-slots', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSwappableSlots(response.data.slots || []);

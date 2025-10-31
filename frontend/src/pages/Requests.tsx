@@ -89,7 +89,7 @@ const Requests = () => {
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/swap-requests', {
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/swap-requests', {
         headers: { Authorization: `Bearer ${token}` }
       });
       
